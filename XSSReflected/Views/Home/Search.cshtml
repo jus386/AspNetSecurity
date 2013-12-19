@@ -1,0 +1,57 @@
+﻿@model XSSReflected.Models.SearchModel
+@{
+    ViewBag.Title = "Search";
+}
+
+<hgroup class="title">
+    <h1>Search.</h1>
+    <h2>Constructs queries from strings. Vulnerable to SQL injection.</h2>
+</hgroup>
+@using (Html.BeginForm("Search", "Home", null))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Search</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(model => model.SearchString)
+                @Html.EditorFor(model => model.SearchString)
+                @Html.ValidationMessageFor(model => model.SearchString)
+            </li>
+        </ol>
+        <input type="submit" value="Search" />
+    </fieldset>
+}
+<p>
+    Searched for
+    <b>
+        @Model.SearchString
+    </b>
+</p>
+<p>
+    There were
+    <b>
+        @Model.ResultsCount
+    </b>
+    products found
+</p>
+<table style="width: 100%;">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Units In Stock</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var result in Model.Results)
+        {
+            <tr>
+                <td>@result.ProductName</td>
+                <td>@result.UnitsInStock</td>
+                <td>@result.Discontinued</td>
+            </tr>
+        }
+    </tbody>
+</table>

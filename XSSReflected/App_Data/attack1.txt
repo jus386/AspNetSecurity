@@ -1,0 +1,9 @@
+﻿chai<script>alert('XSSd');</script>
+chai%3Cscript%3Ealert('XSSd')%3B%3C%2Fscript%3E
+
+
+// Keep in mind that for ASP.NET MVC Razor application we need to do 4 changes deliberately to weaken the app to be succeptible to XSS
+// 1.  Web.config <httpRuntime requestValidationMode="2.0" />
+// 2.  Web.config custom header <add name="X-XSS-Protection" value="0" /> // This is for browsers
+// 3.  [ValidateInput(false)] on the action method
+// 4.  Use @Html.Raw(Model.SearchString)

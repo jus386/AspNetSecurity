@@ -1,0 +1,43 @@
+﻿@model CSRF_StatusUpdate.Models.StatusUpdate
+@{
+    ViewBag.Title = "My Status Updates Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2></h2>
+            </hgroup>
+            <p>
+            </p>
+        </div>
+    </section>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm())
+    {
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Status update</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Status)
+                @Html.TextBoxFor(m => m.Status)
+                <input type="submit" value="Update status" />
+            </li>
+        </ol>
+    </fieldset>
+    <h3>My Status Updates</h3>
+    }
+    {
+        Html.RenderPartial("_StatusUpdatePartial", (IEnumerable<CSRF_StatusUpdate.Models.StatusUpdate>)ViewBag.StatusUpdates);
+    }
+}
+else
+{
+    <p>Log in first then you can update your status.</p>
+}

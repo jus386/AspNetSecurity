@@ -1,0 +1,1 @@
+﻿a' OR 1=1; UPDATE Products SET UnitPrice=UnitPrice+1 WHERE ProductId=1 --
