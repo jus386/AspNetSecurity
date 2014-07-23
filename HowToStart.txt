@@ -1,0 +1,31 @@
+Thank you for interesting for this project. Please let me know if you have any feedback, create an issue in the project.
+
+Instructions for starting up with the code.
+
+1. First download and copy the code to your disk. The folder structure is:
+_Other - This folder contains the source files for malicious site example and malicious files for upload.
+packages - This folder contains all NuGet packages.
+CSRF_StatusUpdate - This folder contains an application that demonstrates CSRF attack.
+FileDownloadHandler - This folder contains an application that demonstrates Unsecured Reference attack.
+InjectionLINQ - This folder contains an application that demonstrates SQL LINQ injection attack.
+InjectionSQL - This folder contains an application that demonstrates SQL injection attack.
+InjectionXPath - This folder contains an application that demonstrates XPATH injection attack.
+RemoteFileInclusion - This folder contains an application that demonstrates Remote File Inclusion attack.
+SessionHijack - This folder contains an application that demonstrates Session Hijack attack.
+XSSReflected - This folder contains an application that demonstrates XSS attack.
+XSSStored - This folder contains an application that demonstrates XSS attack.
+
+
+
+2. Create two web sites in your local IIS
+2.1. The first web site will house all examples, each in separate web application (virtual directory). Name this site "CodeCamp" and to edit bindings to point to http://codecamp.local/. Steps to create:
+2.1.1 Open IIS management console, right click on Sites icon, select "Add Web Site". In the dialog enter: CodeCamp for Site Name, C:\Inetpub\wwwroot\CodeCamp for Physical Path and codecamp.local for Host Name.
+2.1.2 Open C:\Windows\System32\Drivers\etc\hosts file, add following line: 127.0.0.1 codecamp.local
+2.2 Second web site will be used as an example for malicious site. Steps to create:
+2.2.1 Open IIS management console, right click on Sites icon, and select "Add Web Site". In the dialog, enter: EvilSite for Site Name, location of the \_Other\EvilSite directory for Physical Path and evilsite.com for Host Name.
+2.2.2 Open C:\Windows\System32\Drivers\etc\hosts file, add following line: 127.0.0.1 evilsite.com
+
+3. Open Visual Studio 2012 as Administrator. Open the CodeCamp_WebSecurity.sln file. Once opened the Visual Studio will attempt to edit the IIS metabase and set web apps and folders correctly. You may need to click Yes on few dialogs (I don't since I have disabled UAC long time ago :)
+
+
+4. Have fun.
